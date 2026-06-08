@@ -1,0 +1,471 @@
+<<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucero Huincho Huamaní | Ciencias de la Computación</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --background: #fafafa;
+            --text: #111827;
+            --secondary: #6b7280;
+            --border: #e5e7eb;
+            --accent: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: min(1000px, 90%);
+            margin: auto;
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero small {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--secondary);
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 400;
+            color: var(--secondary);
+        }
+
+        .hero p {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            color: #374151;
+            max-width: 780px;
+        }
+
+        .links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--accent);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            padding: 12px 24px;
+            border-radius: 50px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            background: transparent;
+        }
+
+        .links a:hover {
+            transform: translateY(-2px);
+            background: white;
+            border-color: #9ca3af;
+        }
+
+        section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #f1f1f1;
+            border-radius: 14px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+
+        .card strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--accent);
+        }
+
+        .card a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .card a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* DISEÑO DINÁMICO Y MINIMALISTA PARA CURSOS */
+        .course-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-item {
+            padding: 20px 10px;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .course-item:hover {
+            background-color: #ffffff;
+            padding-left: 18px;
+            border-radius: 8px;
+        }
+
+        .course-title {
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: var(--text);
+        }
+
+        .teacher {
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+
+        .teacher a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-style: italic;
+            transition: color 0.2s, font-weight 0.2s;
+        }
+
+        .course-item:hover .teacher a {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .teacher a:hover {
+            text-decoration: underline;
+        }
+
+        .tech-list, .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .list-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item strong {
+            font-size: 1.05rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .list-item span {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        .list-item a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .list-item a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* ESTILO PARA RECURSOS DE IA Y COMPUTACIÓN */
+        .resource-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .resource-card:hover {
+            border-color: #9ca3af;
+        }
+
+        .resource-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .resource-card p {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .resource-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding-top: 40px; }
+            .links { gap: 10px; }
+            .links a { width: 100%; text-align: center; }
+            .course-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="hero">
+        <div class="hero-content">
+            <small>UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS</small>
+            <h1>Lucero Huincho Huamaní</h1>
+            <h2>Estudiante de Ciencias de la Computación | Especialidad en Inteligencia Artificial</h2>
+            <p>
+                Me impulsa una profunda curiosidad por la resolución de problemas complejos mediante algoritmos y el firme compromiso de canalizar el potencial de la IA hacia el beneficio social. Actualmente, enfoco mis esfuerzos en la excelencia académica dentro de la UNMSM para consolidarme en el tercio superior de mi facultad, preparándome para proyectar y liderar soluciones tecnológicas de alto impacto.
+            </p>
+            <div class="links">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lucerohuincho16@gmail.com" target="_blank">📧 Correo</a>
+                <a href="https://www.linkedin.com/in/lucero-huincho-huaman%C3%AD-732605343?trk=contact-info" target="_blank">LinkedIn</a>
+                <a href="https://github.com/lucerohuinchoh-jus" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <h2 class="section-title">👩‍💻 Presentación Profesional</h2>
+        <div class="grid">
+            <div class="card">
+                <strong>🏛️ Universidad</strong>
+                <a href="https://www.unmsm.edu.pe/" target="_blank">Universidad Nacional Mayor de San Marcos</a>
+            </div>
+            <div class="card">
+                <strong>🏫 Facultad</strong>
+                <a href="https://fisi.unmsm.edu.pe/" target="_blank">Ingeniería de Sistemas e Informática</a>
+            </div>
+            <div class="card">
+                <strong>📍 Ubicación</strong>
+                Lima, Perú
+            </div>
+            <div class="card">
+                <strong>💼 Intereses</strong>
+                Desarrollo de Software, Modelos de IA e Innovación
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">📚 Cursos Académicos</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <span class="course-title">Introducción a las Ciencias de la Computación</span>
+                <span class="teacher"><a href="https://www.linkedin.com/in/ecuadrosv?trk=contact-info" target="_blank">Ernesto Cuadros Vargas</a></span>
+            </div>
+            <div class="course-item">
+                <span class="course-title">Cálculo I</span>
+                <span class="teacher"><a href="https://www.linkedin.com/in/marcos-maravi?trk=contact-info" target="_blank">Edwin Marcos Maraví Percca</a></span>
+            </div>
+            <div class="course-item">
+                <span class="course-title">Álgebra y Geometría Analítica</span>
+                <span class="teacher"><a href="https://www.linkedin.com/in/hellen-gloria-terreros-navarro-a62bb5385?trk=contact-info" target="_blank">Hellen Gloria Terreros Navarro</a></span>
+            </div>
+            <div class="course-item">
+                <span class="course-title">Redacción</span>
+                <span class="teacher"><a href="https://www.linkedin.com/in/ana-eylin-coronel-tello-8934a4140?trk=contact-info" target="_blank">Ana Eylin Coronel Tello</a></span>
+            </div>
+            <div class="course-item">
+                <span class="course-title">Desarrollo Personal</span>
+                <span class="teacher">Luz Basualdo Porras</span>
+            </div>
+            <div class="course-item">
+                <span class="course-title">Métodos de Estudios Universitarios</span>
+                <span class="teacher"><a href="https://www.linkedin.com/in/miryam-cosme-felix-22a52140?trk=contact-info" target="_blank">Miryam Milagros Cosme Félix</a></span>
+            </div>
+            <div class="course-item">
+                <span class="course-title">Medio Ambiente y Desarrollo Sostenible</span>
+                <span class="teacher">Petronila Mérida Fanola Merino</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">🛠️ Tecnologías en Aprendizaje</h2>
+        <div class="tech-list">
+            <div class="list-item">
+                <strong>Python</strong>
+                <span>Lógica de programación y fundamentos para Inteligencia Artificial.</span>
+            </div>
+            <div class="list-item">
+                <strong>Git & GitHub</strong>
+                <span>Control de versiones y gestión de repositorios.</span>
+            </div>
+            <div class="list-item">
+                <strong>Linux & VS Code</strong>
+                <span>Manejo de terminal, comandos básicos y entorno de desarrollo.</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">🌐 Plataformas de Aprendizaje y Consulta</h2>
+        <div class="grid">
+            <div class="resource-card">
+                <h3>ACM Association</h3>
+                <p>Association for Computing Machinery. Acceso a la mayor sociedad educativa y científica de computación en el mundo.</p>
+                <a href="https://www.acm.org/" class="resource-link" target="_blank">→ Visitar sitio</a>
+            </div>
+            <div class="resource-card">
+                <h3>IEEE Computer Society</h3>
+                <p>Comunidad global líder en teoría, práctica y aplicaciones de la ciencia de la computación y tecnología.</p>
+                <a href="https://www.computer.org/" class="resource-link" target="_blank">→ Visitar sitio</a>
+            </div>
+            <div class="resource-card">
+                <h3>MDN Web Docs</h3>
+                <p>Plataforma de documentación primordial para estándares web, desarrollo frontend y tecnologías en evolución.</p>
+                <a href="https://developer.mozilla.org/" class="resource-link" target="_blank">→ Visitar sitio</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">⚡ Más allá del código</h2>
+        <div class="tech-list">
+            <div class="list-item">
+                <strong>Danza Urbana & Freestyle</strong>
+                <span>Mi espacio de libre creación y expresión. Desarrolla mi agilidad mental y adaptación al cambio.</span>
+            </div>
+            <div class="list-item">
+                <strong>Música (Guitarra)</strong>
+                <span>Reto personal en proceso de aprendizaje para cultivar la disciplina, enfoque y concentración.</span>
+            </div>
+            <div class="list-item">
+                <strong>Idiomas (Inglés)</strong>
+                <span>Estudiante en el ICPNA para conectar con entornos globales y acceder a documentación técnica.</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">👥 Red de Contactos</h2>
+        <div class="contact-list">
+            <div class="list-item">
+                <strong><a href="https://www.linkedin.com/in/megan-layne-soto-bardales-9b6811404?trk=contact-info" target="_blank">Megan Layne Soto Bardales</a></strong>
+                <span>Estudiante de Ciencias de la Computación (IA) | UNMSM</span>
+            </div>
+            <div class="list-item">
+                <strong><a href="https://www.linkedin.com/in/danaly-jaquelin-diaz-alvarado-092a35404?trk=contact-info" target="_blank">Danaly Jaquelin Díaz Alvarado</a></strong>
+                <span>Estudiante de Ciencias de la Computación (IA) | UNMSM</span>
+            </div>
+            <div class="list-item">
+                <strong><a href="https://www.linkedin.com/in/naysha-puquio-gonzalo-16ou6ts1de?trk=contact-info" target="_blank">Naysha Puquio Gonzalo</a></strong>
+                <span>Estudiante de Ciencias de la Computación (IA) | UNMSM</span>
+            </div>
+            <div class="list-item">
+                <strong><a href="https://www.linkedin.com/in/andrea-ericka-trejo-garay-727456406?trk=contact-info" target="_blank">Andrea Ericka Trejo Garay</a></strong>
+                <span>Estudiante de Ciencias de la Computación (IA) | UNMSM</span>
+            </div>
+            <div class="list-item">
+                <strong><a href="https://www.linkedin.com/in/patrick-jusephy-melo-ramos-a3b86640a?trk=contact-info" target="_blank">Patrick Jusephy Melo Ramos</a></strong>
+                <span>Estudiante de Ciencias de la Computación (IA) | UNMSM</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Lucero Huincho Huamaní · Ciencias de la Computación e Inteligencia Artificial · UNMSM
+    </footer>
+
+</div>
+
+</body>
+</html>
